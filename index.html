@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer - Tech İnovasyonu & Doğa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d4a3a; /* Koyu yeşil */
+            --secondary: #f0f7f4; /* Açık yeşil */
+            --accent: #4a7c59; /* Orta yeşil */
+            --text: #333;
+            --light: #fff;
+            --shadow: rgba(0,0,0,0.08);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+        .mountain-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f0f7f4;stop-opacity:1" /><stop offset="100%" style="stop-color:%23e8f5e8;stop-opacity:1" /></linearGradient></defs><polygon fill="url(%23grad)" points="0,400 300,200 600,250 900,180 1200,400"/><polygon fill="%23d1e7d2" points="0,400 150,250 450,220 750,300 1200,400"/></svg>');
+            z-index: -1;
+            opacity: 0.05;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 10px 0 0 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 400;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        main {
+            padding-top: 100px;
+        }
+        section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 3em; line-height: 1.1; }
+        h2 { font-size: 2.2em; border-bottom: 1px solid #e0e0e0; padding-bottom: 15px; }
+        #hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: var(--light);
+        }
+        #hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .personal-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            font-size: 2.5em;
+        }
+        .personal-icons span { transition: transform 0.3s ease; }
+        .personal-icons span:hover { transform: scale(1.1); }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .project {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px var(--shadow);
+        }
+        .project h3 {
+            font-size: 1.4em;
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+            font-size: 0.85em;
+            color: var(--accent);
+        }
+        .tech-stack span {
+            background: var(--secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        #skills ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        #skills li {
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow);
+            text-align: center;
+        }
+        #contact {
+            text-align: center;
+            background: var(--light);
+            border-radius: 12px;
+            padding: 60px 40px;
+            box-shadow: 0 4px 30px var(--shadow);
+        }
+        #contact a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        #contact a:hover { color: var(--accent); }
+        footer {
+            background: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 20px; flex-direction: column; }
+            .personal-icons { gap: 20px; font-size: 2em; }
+            section { padding: 60px 20px; }
+            .project-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mountain-bg"></div>
+    
+    <header>
+        <h1 class="logo">Developer</h1>
+        <nav>
+            <ul>
+                <li><a href="#hero">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#skills">Yetenekler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+          
+            <p>Tech inovasyonunda doğanın huzuruyla kod geliştiriyorum. Sürdürülebilir çözümler ve yaratıcı yaklaşımlarla, yeşillik ilhamlı projeler üretiyorum.</p>
+            <div class="personal-icons">
+                <span title="Okur">📖</span>
+                <span title="Çizer">✏️</span>
+                <span title="Yazar">📝</span>
+                <span title="Dağ Sever">🏔️</span>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>Hakkımda</h2>
+            <p>Full-stack geliştirici olarak, inovatif yazılımlarla çevre dostu teknolojiler yaratıyorum. Kitaplar okur, eskizler çizer ve hikayeler yazarım – hepsi koduma yansır.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projeler</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <h3>Yeşil Tech App</h3>
+                    <p>Çevre izleme mobil uygulaması: Karbon ayak izini gerçek zamanlı takip eder.</p>
+                    <div class="tech-stack">
+                        <span>React Native</span>
+                        <span>Node.js</span>
+                        <span>Firebase</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Dağ Rotası Tracker</h3>
+                    <p>GPS tabanlı rota optimizasyonu: Doğa yürüyüşleri için AI destekli öneriler.</p>
+                    <div class="tech-stack">
+                        <span>Flutter</span>
+                        <span>Mapbox</span>
+                        <span>Machine Learning</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Inovasyon Dashboard</h3>
+                    <p>Veri görselleştirme panosu: Yeşil enerji metriklerini analiz eder.</p>
+                    <div class="tech-stack">
+                        <span>D3.js</span>
+                        <span>Python</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Yetenekler</h2>
+            <ul>
+                <li>Frontend: React, Vue.js, CSS3</li>
+                <li>Backend: Node.js, Python, Express</li>
+                <li>Mobil: React Native, Flutter</li>
+                <li>Veri: D3.js, Pandas, SQL</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>İletişim</h2>
+            <p>İşbirliği için hazırım. <a href="mailto:developer@ornek.com">developer@ornek.com</a> | <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Developer. Doğa ilhamlı, inovatif kodlar.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
